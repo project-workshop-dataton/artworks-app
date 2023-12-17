@@ -11,6 +11,18 @@ def count_bag_of_words(model: gensim.models.keyedvectors.KeyedVectors, text: str
     return text_vector
 
 def find_most_similar_text(model: gensim.models.keyedvectors.KeyedVectors, query: str, texts: list[str], top_k: int) -> list[str]:
+    '''
+
+    Args:
+        model (gensim.models.keyedvectors.KeyedVectors): Word vectors
+        query (str): User query
+        texts (list[str]): list of arts descriptions
+        top_k (int): Hom many arts you want
+
+    Returns:
+        list[str]: List of most similar descriptions
+    '''
+
     query_vector = count_bag_of_words(model=model, text=query)
     texts_vectors = pd.DataFrame({'text': texts, 
                                   'text_vector': list(map(lambda text: count_bag_of_words(model=model, text=text), texts))})
