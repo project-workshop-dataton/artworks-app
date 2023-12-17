@@ -3,6 +3,9 @@ from urllib import response
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from gensim.models import KeyedVectors
+
+import model_implementing.word2vec as w2v
 
 app = FastAPI()
 
@@ -17,6 +20,12 @@ def search(q: Union[str, None] = None):
     - type
     - date
     '''
+    
+    path_to_word_vectors = '~/Desktop/Projects/Data/GoogleNews/GoogleNews-vectors-negative300.bin.gz'
+    model = KeyedVectors.load_word2vec_format(path_to_word_vectors, binary=True)
+    
+    w2v.find_most_similar_text(model= model, query='impressionism',texts = ['man in black', 'starry night'], top_k = 1)
+
     # получение ИД
     # из файла достать 3 объекта
     # достать картинку из поисковика
