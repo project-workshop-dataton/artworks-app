@@ -25,7 +25,13 @@ class ImageLoader:
       'Connection': 'keep-alive'}
         self.work_path = "./static/images/"
     def newrun(self,req,id):
-        pass
+        self.query = quote(req.replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘", " "))
+        request_url = 'https://www.moma.org/collection/works/' + str(id)
+        #request = urllib.request.Request(request_url, 2, headers=self.headers)
+        #response = urllib.request.urlopen(request)
+        #html = response.read().decode('utf8')
+        #link = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
+        #print(link)
     def run(self,req,id):
         self.query = quote(req.replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘"," "))
         request_url = 'https://www.bing.com/images/async?q=' + self.query \

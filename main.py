@@ -39,8 +39,9 @@ def search(q: Union[str, None] = None):
     data = most_similar_arts[['artwork_id','title', 'name', 'medium', 'classification', 'release_date']].to_dict('records')
     final=[]
     for object in data:
-        load.run(object['name']+object['title'],object['artwork_id'])  # строка поиска картинки по сути название картины + автор
-        object['link'] = './images/'+str(object['artwork_id'])+'.png'
+        load.newrun(object['title'],object['artwork_id'])  # строка поиска картинки по сути название картины + автор
+        #object['link'] = './images/'+str(object['artwork_id'])+'.png'
+        object['link'] = './images/' + '6712' + '.png'
         final.append(object)
     # dummy = {
     #     'id': '29296',
