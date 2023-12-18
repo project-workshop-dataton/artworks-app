@@ -1,8 +1,8 @@
 from typing import Union
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-# from Logic_init import model,load, df, arts_descriptions
-from Logic_init import model, df, arts_descriptions
+from Logic_init import model,load, df, arts_descriptions
+#from Logic_init import model, df, arts_descriptions
 import model_implementing.word2vec as w2v
 
 app = FastAPI()
@@ -26,7 +26,7 @@ def search(q: Union[str, None] = None):
     most_similar_arts = df[df['feature_joined_text'].isin(most_similar_descriptions)]
 
     # df[df['feature_joined_text'] in most_similar_descriptions]
-    # load.run("the manhattan transcripts project new york new york episode one the park bernard tschumi")  # строка поиска картинки по сути название картины + автор
+
     
 
     # получение ИД
@@ -36,7 +36,12 @@ def search(q: Union[str, None] = None):
 
     # return 3 suggestions
     most_similar_arts['release_date'] = most_similar_arts['release_date'].astype(str)
-    data = most_similar_arts[['title', 'name', 'medium', 'classification', 'release_date']].to_dict('records')
+    data = most_similar_arts[['artwork_id','title', 'name', 'medium', 'classification', 'release_date']].to_dict('records')
+    final=[]
+    for object in data:
+        load.run(object['name']+object['title'],object['artwork_id'])  # строка поиска картинки по сути название картины + автор
+        object['link'] = './images/'+str(object['artwork_id'])+'.png'
+        final.append(object)
     # dummy = {
     #     'id': '29296',
     #     'title': 'Picasso Dessins',
