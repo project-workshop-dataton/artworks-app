@@ -12,6 +12,9 @@ Install numpy, pandas, gensim
 
 `pip install numpy pandas gensim`
 
+Install Pillow
+`pip install Pillow`
+
 ## Start server
 
 `uvicorn main:app --reload`
