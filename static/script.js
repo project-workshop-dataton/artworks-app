@@ -36,11 +36,11 @@ async function searchArts(e) {
       let img = clone.querySelector('#card-thumb');
 
       title.textContent = element['title'];
-      author.textContent = element['author'];
-      desc.textContent = element['description'];
-      ctype.textContent = element['type'];
-      cdate.textContent = element['date'];
-      img.setAttribute('src', element['link']);
+      author.textContent = element['name'];
+      desc.textContent = element['medium'];
+      ctype.textContent = element['classification'];
+      cdate.textContent = element['release_date'];
+      // img.setAttribute('src', element['link']);
 
       holder.appendChild(clone);
     });
