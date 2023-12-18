@@ -40,7 +40,7 @@ async function searchArts(e) {
       desc.textContent = element['medium'];
       ctype.textContent = element['classification'];
       cdate.textContent = element['release_date'];
-      // img.setAttribute('src', element['link']);
+      img.setAttribute('src', element['link']);
 
       holder.appendChild(clone);
     });

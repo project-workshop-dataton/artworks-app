@@ -4,8 +4,9 @@ import urllib
 import re
 import imghdr
 from PIL import Image, ImageOps, ImageFont
+from urllib.parse import quote
 from PIL import ImageDraw
-def photoshop(filename,name):
+def photoshop(filename):
     img = Image.open(filename)
     rgba = img.convert("RGBA")
     resize = ImageOps.pad(rgba, (200,300), color=(255, 255, 255, 0))
@@ -22,10 +23,11 @@ class ImageLoader:
       'Accept-Encoding': 'none',
       'Accept-Language': 'ru,en;q=0.9',
       'Connection': 'keep-alive'}
-        self.download_count = 0
-        self.work_path = "./images/"
-    def run(self,req,amount = 1):
-        self.query = req.replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘"," ")
+        self.work_path = "./static/images/"
+    def newrun(self,req,id):
+        pass
+    def run(self,req,id):
+        self.query = quote(req.replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘"," "))
         request_url = 'https://www.bing.com/images/async?q=' + self.query \
                       + '&qft=' + 'filterui:photo-photo'+'+filterui:aspect-tall'
         request = urllib.request.Request(request_url, None, headers=self.headers)
@@ -35,13 +37,13 @@ class ImageLoader:
         #print(link[0::5])
         temp_load=0
         while True:
-            if self.save_image(link[temp_load],self.query):
+            if self.save_image(link[temp_load],id):
                     break
             temp_load+=1
         #print("Скачивание Выполнено за {} итерации".format(temp_load+1))
 
 
-    def save_image(self, link,req):
+    def save_image(self, link,id):
         try:
             if " " in link:
                 return False
@@ -50,11 +52,10 @@ class ImageLoader:
             if not imghdr.what(None, image):
                 #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
                 raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
-            filename = self.work_path+str(self.download_count)+".png"
+            filename = self.work_path+str(id)+".png"
             with open(filename, 'wb') as f:
                 f.write(image)
-            photoshop(filename,req.replace("+"," ")) #второй аргумент тут не нужен, передаётся на всякий (содержит текст запроса название картины + автор)
-            self.download_count += 1
+            photoshop(filename)
             return True
         except Exception as e:
             #print('403 '+link, e)
