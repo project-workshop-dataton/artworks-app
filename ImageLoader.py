@@ -9,7 +9,7 @@ from PIL import ImageDraw
 def photoshop(filename):
     img = Image.open(filename)
     rgba = img.convert("RGBA")
-    resize = ImageOps.pad(rgba, (200,300), color=(255, 255, 255, 0))
+    resize = ImageOps.pad(rgba, (300,200), color=(255, 255, 255, 0))
     #border = (0, 0, 0, 0)
     #final = ImageOps.expand(resize, border=border, fill='black') #задел на дополнение картинки, вместо обрезки
     resize.save(filename,"PNG")
