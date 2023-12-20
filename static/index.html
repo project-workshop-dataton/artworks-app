@@ -22,8 +22,8 @@
       <div class="row py-sm-3">
         <div class="col-sm-8 mx-auto">
           <div class="input-group mb-3">
-            <input id="search-string" type="text" class="form-control" placeholder="Something you keen on..." aria-describedby="button-addon2" />
-            <button class="btn btn-light" type="button" id="search-btn">
+            <input id="search-string" type="text" class="form-control" placeholder="Something you keen on..." />
+            <button class="btn btn-light" type="submit" id="search-btn">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -40,7 +40,7 @@
     </div>
 
     <template id="card_template">
-      <div class="card shadow-sm" style="width: 300px; height: 500px; box-sizing: content-box">
+      <div class="card shadow-sm h-100" style="width: 300px; height: 600px; box-sizing: content-box" data-id="">
         <img id="card-thumb" class="card-img-top" style="height: 200px" alt="..." />
 
         <div class="card-body">
@@ -49,11 +49,18 @@
           <p id="card-text" class="card-text" style="font-size: 12px"></p>
         </div>
         <div class="card-footer">
-          <small id="card-type" class="text-body-secondary"></small><br />
-          <small id="card-date" class="text-body-secondary"></small>
+          <div class="mb-2">
+            <small id="card-type" class="text-body-secondary"></small><br />
+            <small id="card-date" class="text-body-secondary"></small>
+          </div>
+
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+            <button id="like-btn" type="button" class="btn btn-outline-success"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+            <button id="dislike-btn" type="button" class="btn btn-outline-danger"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+          </div>
         </div>
       </div>
     </template>
-    <script src="script.js?version=3"></script>
+    <script src="script.js?version=4"></script>
   </body>
 </html>
