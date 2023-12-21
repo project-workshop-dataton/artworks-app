@@ -5,13 +5,14 @@ import pandas as pd
 def count_bag_of_words(model: gensim.models.keyedvectors.KeyedVectors, text: str) -> np.ndarray:
     words = text.split(' ')
     text_vector = np.zeros(model.vector_size)
+    indexed_words_quantity = 0
     for word in words:
         if model.has_index_for(word):
+            indexed_words_quantity += 1
             text_vector += model[word]
-    words_quantity = len(words)
-    if words_quantity != 0:
-        text_vector /= words_quantity
-        
+    if indexed_words_quantity != 0:
+        text_vector /= indexed_words_quantity
+
     return text_vector
 
 def find_most_similar_text(model: gensim.models.keyedvectors.KeyedVectors, query: str, texts: list[str], top_k: int) -> list[str]:
