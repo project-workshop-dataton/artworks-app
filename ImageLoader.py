@@ -15,6 +15,50 @@ import asyncio
 from timeit import default_timer
 from concurrent.futures import ThreadPoolExecutor
 work_path = "./static/images/"
+def save_image_bing(link,id,headers):
+    try:
+        if " " in link:
+            return False
+        request = urllib.request.Request(link, None, headers)
+        image = urllib.request.urlopen(request, timeout=2).read()
+        if not imghdr.what(None, image):
+            #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
+            raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
+        photoshop(image,id)
+        return True
+    except Exception as e:
+        #print('403 '+link, e)
+        return False
+def run(req,id):
+    print("Поиск по названию: ",req[str(id)])
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) '
+                             'AppleWebKit/537.11 (KHTML, like Gecko)'
+                             'Chrome/23.0.1271.64 Safari/537.11',
+               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+               'Accept-Charset': 'ISO-8859-1,utf-8;q=0.3,*;q=0.7',
+               'Accept-Encoding': 'none',
+               'Accept-Language': 'ru,en;q=0.9',
+               'Connection': 'keep-alive'}
+    query = quote(req[str(id)].replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘"," "))
+    request_url = 'https://www.bing.com/images/async?q=' + query \
+                  + '&qft=' + 'filterui:photo-photo'
+    request = urllib.request.Request(request_url, None, headers=headers)
+    response = urllib.request.urlopen(request)
+    html = response.read().decode('utf8')
+    link = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
+    #print(link[0::5])
+    temp_load=0
+    try:
+        while True:
+            if save_image_bing(link[temp_load],id,headers):
+                    break
+            temp_load+=1
+        #print("Скачивание Выполнено за {} итерации".format(temp_load+1))
+    except IndexError:
+        with open('./static/images/dummy.png', "rb") as image:
+            f = image.read()
+            b = bytearray(f)
+        photoshop(b,id)
 def photoshop(file,id):
     img = Image.open(BytesIO(file))
     rgba = img.convert("RGBA")
@@ -101,7 +145,7 @@ async def fetch(browser, id,index):
         pageTitle = await page.title()
         print(str(pageTitle))
         if str(pageTitle) =="Page not found | MoMA":
-            return False
+            return None,id
         #selector = '#main > section.work > div.work__hero.layout\/wrapper > div.carousel > div'
         #selector='#main > section.work > div.work__hero.layout\/wrapper > div.carousel'
         #await page.waitForSelector(selector,{'visible': True})
@@ -131,9 +175,15 @@ def parseWebpage(page,id):
     soup = bs4.BeautifulSoup(page,features="lxml")
     #print(soup.text)
     ma = soup.select_one(selector='img',class_='link/enable link/focus picture/image')
-    print(ma['src'])
+    #print(ma)
+    if ma is None:
+        print("Картинка -")
+        return None, None
+    if ma.find("facebook") != -1:
+        return None, None
+    #print(ma['src'])
     return ma['src'],id
-async def newrun(id_list,names_list):
+async def newrun(id_list,names_dic):
     #asession = AsyncHTMLSession()
     #r = await asession.get('https://python.org/')
     #ma = await r.html.arender()
@@ -158,13 +208,18 @@ async def newrun(id_list,names_list):
             for index,id in enumerate(id_list,start=0)
         ]
         for response in await asyncio.gather(*tasks):
-            if response != False:
+            if response[0] != None:
                 parse_data,id = parseWebpage(*response)
-                print("Parse data",parse_data)
-                image = save_image(parse_data,id)
-                photoshop(image,id)
+                if parse_data is None:
+                    print("Картинка отсутствует на сайте, переход в глобальный поиск")
+                    run(names_dic, response[1])
+                else:
+                    print("Parse data",parse_data)
+                    image = save_image(parse_data,id)
+                    photoshop(image,id)
             else:
-                print("Картинка битая")
+                print("Произведение было удалено, переход в глоабльный поиск")
+                run(names_dic,response[1])
         await browser.close()
     # Initializes the tasks to run and awaits their results
     #for response in await asyncio.gather(*tasks):
@@ -198,35 +253,4 @@ async def newrun(id_list,names_list):
     #
     #
     #    await browserObj.close()
-def run(self,req,id):
-    self.query = quote(req.replace(' ', '+').replace('…', '').replace('@', '').replace('(', '').replace(')', '').replace("‘"," "))
-    request_url = 'https://www.bing.com/images/async?q=' + self.query \
-                  + '&qft=' + 'filterui:photo-photo'+'+filterui:aspect-tall'
-    request = urllib.request.Request(request_url, None, headers=self.headers)
-    response = urllib.request.urlopen(request)
-    html = response.read().decode('utf8')
-    link = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
-    #print(link[0::5])
-    temp_load=0
-    while True:
-        if self.save_image(link[temp_load],id):
-                break
-        temp_load+=1
-    #print("Скачивание Выполнено за {} итерации".format(temp_load+1))
-def save_image_1(self, link,id):
-    try:
-        if " " in link:
-            return False
-        request = urllib.request.Request(link, None, self.headers)
-        image = urllib.request.urlopen(request, timeout=2).read()
-        if not imghdr.what(None, image):
-            #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
-            raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
-        filename = self.work_path+str(id)+".png"
-        with open(filename, 'wb') as f:
-            f.write(image)
-        photoshop(filename)
-        return True
-    except Exception as e:
-        #print('403 '+link, e)
-        return False
+

@@ -38,19 +38,20 @@ async def search(q: Union[str, None] = None):
     # return 3 suggestions
     data = most_similar_arts[['title','artwork_id', 'name','medium', 'classification']].to_dict('records')
     temp=[]
-    temp_names = []
+    temp_names = {}
     for object in data:
         id=str(object['artwork_id'])
         if not os.path.isfile('./static/images/'+id+'.png'):
             temp.append(id)
-            temp_names.append(object['name'] +" "+ object['title'])
+            temp_names[str(id)]= object['name'] +" "+ object['title']
             print("Вызов")
         object['link'] = './images/'+id+'.png'
         #object['link'] = './images/dummy.png'
         #print(object)
-    loop = asyncio.get_event_loop()
-    future = asyncio.ensure_future(newrun(temp,temp_names))
-    loop.run_until_complete(future)
+    if len(temp) !=0:
+        loop = asyncio.get_event_loop()
+        future = asyncio.ensure_future(newrun(temp,temp_names))
+        loop.run_until_complete(future)
 
         # строка поиска картинки по сути название картины + автор
         # load.newrun(object['title'], object['artwork_id'])
