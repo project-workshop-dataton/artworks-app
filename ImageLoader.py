@@ -90,19 +90,24 @@ def save_image(link,id):
     #
     #    subprocess.Popen(cmd).communicate()
 
-async def fetch(browser, id,index,id_list):
+async def fetch(browser, id,index):
     try:
         page = await browser.newPage()
-        await page.goto("https://www.moma.org/collection/works/" + id,{ 'waitUntil': 'domcontentloaded' })
+        await page.goto("https://www.moma.org/collection/works/" + id,{ 'waitUntil': 'domcontentloaded'})
         print("Загрузка началась")
         # await page.screenshot({'path': output_path +i+'.jpg'})
         # htmlContent = await page.content()
         # print(htmlContent)
+        pageTitle = await page.title()
+        print(str(pageTitle))
+        if str(pageTitle) =="Page not found | MoMA":
+            return False
         #selector = '#main > section.work > div.work__hero.layout\/wrapper > div.carousel > div'
-        selector='#main > section.work > div.work__hero.layout\/wrapper > div.carousel'
-        await page.waitForSelector(selector,{'visible': True})
+        #selector='#main > section.work > div.work__hero.layout\/wrapper > div.carousel'
+        #await page.waitForSelector(selector,{'visible': True})
         #print(index)
         #image_element = await page.querySelector(selector)
+
         pages = await browser.pages()
         await pages[index].bringToFront()
         # if image_element:
@@ -128,16 +133,18 @@ def parseWebpage(page,id):
     ma = soup.select_one(selector='img',class_='link/enable link/focus picture/image')
     print(ma['src'])
     return ma['src'],id
-async def newrun(id_list):
+async def newrun(id_list,names_list):
     #asession = AsyncHTMLSession()
     #r = await asession.get('https://python.org/')
     #ma = await r.html.arender()
     print(id_list)
-    id_list = [
-        '199591',
-        '199593',
-        '199595'
-    ]
+    # mock object для теста
+
+    #id_list = [
+    #    '199591',
+    #    '199593',
+    #    '199595'
+    #]
     with ThreadPoolExecutor(max_workers=20) as executor:
         browser = await launch({"headless": False,"args": ["--start-minimized"]})
         loop = asyncio.get_event_loop()
@@ -146,15 +153,18 @@ async def newrun(id_list):
             await loop.run_in_executor(
                 executor,
                 fetch,
-                *(browser, id,index,id_list)  # Allows us to pass in multiple arguments to `fetch`
+                *(browser, id,index)  # Allows us to pass in multiple arguments to `fetch`
             )
             for index,id in enumerate(id_list,start=0)
         ]
         for response in await asyncio.gather(*tasks):
-            parse_data,id = parseWebpage(*response)
-            print("Parse data",parse_data)
-            image = save_image(parse_data,id)
-            photoshop(image,id)
+            if response != False:
+                parse_data,id = parseWebpage(*response)
+                print("Parse data",parse_data)
+                image = save_image(parse_data,id)
+                photoshop(image,id)
+            else:
+                print("Картинка битая")
         await browser.close()
     # Initializes the tasks to run and awaits their results
     #for response in await asyncio.gather(*tasks):
