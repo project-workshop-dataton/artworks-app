@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from ImageLoader import newrun
 from Logic_init import model, df, arts_descriptions 
 import model_implementing.word2vec as w2v
-from mysql_connector import add_data
+from mysql_connector import add_data,get_data
 import nest_asyncio
 # создание приложения
 app = FastAPI()
