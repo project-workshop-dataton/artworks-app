@@ -3,3 +3,4 @@ data/*
 static/images/*
 !static/images/dummy.png
 .env/
+.vscode/

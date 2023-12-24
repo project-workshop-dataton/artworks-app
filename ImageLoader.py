@@ -1,17 +1,11 @@
-import random
-import time
 import urllib.request
 import urllib
 import re
 import imghdr
 from io import BytesIO
-
 from PIL import Image, ImageOps, ImageFont
 from urllib.parse import quote
-
 from pyppeteer import launch
-import nest_asyncio
-nest_asyncio.apply()
 import bs4
 import shutil
 from requests_html import AsyncHTMLSession

@@ -1,3 +1,4 @@
+// создаем привязку к объектам
 const search = document.getElementById('search-btn');
 const query = document.getElementById('search-string');
 const holder = document.getElementById('cards_container');
