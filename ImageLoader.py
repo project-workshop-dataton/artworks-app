@@ -7,12 +7,8 @@ from PIL import Image, ImageOps, ImageFont
 from urllib.parse import quote
 from pyppeteer import launch
 import bs4
-import shutil
-from requests_html import AsyncHTMLSession
-from PIL import ImageDraw
 import requests
 import asyncio
-from timeit import default_timer
 from concurrent.futures import ThreadPoolExecutor
 work_path = "./static/images/"
 def save_image_bing(link,id,headers):
