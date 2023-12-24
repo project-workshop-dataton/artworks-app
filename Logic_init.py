@@ -1,9 +1,7 @@
 import os
 import gdown
 from gensim.models import KeyedVectors
-from ImageLoader import ImageLoader
 import pandas as pd
-load = ImageLoader()  # создание объекта load
 path_to_word_vectors = "./data/GoogleNews-vectors-negative300.bin.gz"
 path_to_model = './data/arts_data_model_and_front.csv'
 if not os.path.exists(path_to_word_vectors):
