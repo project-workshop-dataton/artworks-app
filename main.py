@@ -6,13 +6,13 @@ from fastapi.staticfiles import StaticFiles
 from ImageLoader import newrun
 from Logic_init import model, df, arts_descriptions 
 import model_implementing.word2vec as w2v
-from pprint import pprint
-import asyncio
+from mysql_connector import add_data
 import nest_asyncio
 # создание приложения
 app = FastAPI()
 import asyncio
 nest_asyncio.apply()
+import pymysql
 
 
 # обработчик поискового запроса
@@ -68,13 +68,11 @@ async def search(q: Union[str, None] = None):
     # pprint(data)
     return data
 
-
 # сбор обратной связи по качеству ответа
 @app.post("/api/feedback")
 async def feedback(request: Request):
     fb = await request.json()
     print(fb)
-
-
-# подключаем статические файла сайта, включая веб-приложение
+    add_data(fb['q'],fb['id'],fb['feedback'])
+# подключаем статические файлы сайта, включая веб-приложение
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

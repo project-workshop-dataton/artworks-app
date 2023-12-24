@@ -49,7 +49,7 @@ async function searchArts(e) {
       cdate.textContent = element['pub_year'];
       img.setAttribute('src', element['link']);
       like.addEventListener('click', (e) => sendFeedback(element['artwork_id'], 1));
-      dislike.addEventListener('click', (e) => sendFeedback(element['artwork_id'], -1));
+      dislike.addEventListener('click', (e) => sendFeedback(element['artwork_id'], 0));
 
       holder.appendChild(clone);
     });
