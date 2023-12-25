@@ -1,5 +1,6 @@
 import os
 import time
+import json
 from typing import Union
 #from pydantic import BaseModel
 from fastapi import FastAPI, Request
@@ -15,6 +16,17 @@ import asyncio
 nest_asyncio.apply()
 import pymysql
 
+def write_json(new_data, filename='data/metric.json'):
+    if not os.path.isfile(filename):
+        with open(filename, 'w+') as file:
+            file.write("{}")
+            file.close()
+    with open(filename, 'r+') as file:
+        file_data = list(json.load(file))
+        file_data.append(new_data)
+        file.seek(0)
+        json.dump(file_data, file, indent=4)
+        file.close()
 
 # обработчик поискового запроса
 @app.get("/api")
@@ -30,7 +42,10 @@ async def search(q: Union[str, None] = None):
     - link - ссылка на иллюстрация
     '''
     #print(df['feature_joined_text'][85287])
-    most_similar_descriptions = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions, top_k=3)  # type: ignore
+    most_similar_descriptions, cosine_distances = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions, top_k=3)
+    
+    describtions_cosine_distances = dict(zip(most_similar_descriptions, cosine_distances))
+    write_json({'query': q, 'output': describtions_cosine_distances})
 
     most_similar_arts = df[df['feature_joined_text'].isin(
         most_similar_descriptions)]
