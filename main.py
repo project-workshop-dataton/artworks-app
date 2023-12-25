@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from ImageLoader import newrun
 from Logic_init import model, df, arts_descriptions 
 import model_implementing.word2vec as w2v
-from mysql_connector import add_data,get_data
+from mysql_connector import add_data,get_data,add_data_V2,get_data_V2
 import nest_asyncio
 # создание приложения
 app = FastAPI()
@@ -28,9 +28,8 @@ async def search(q: Union[str, None] = None):
     - pub_year - год создания
     - link - ссылка на иллюстрация
     '''
-
-    most_similar_descriptions = w2v.find_most_similar_text(
-        model=model, query=q, texts=arts_descriptions, top_k=3)  # type: ignore
+    print(df['feature_joined_text'][85287])
+    most_similar_descriptions = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions, top_k=3)  # type: ignore
 
     most_similar_arts = df[df['feature_joined_text'].isin(
         most_similar_descriptions)]
@@ -73,6 +72,6 @@ async def search(q: Union[str, None] = None):
 async def feedback(request: Request):
     fb = await request.json()
     print(fb)
-    add_data(fb['q'],fb['id'],fb['feedback'])
+    add_data_V2(fb['q'],fb['id'],fb['feedback'])
 # подключаем статические файлы сайта, включая веб-приложение
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
