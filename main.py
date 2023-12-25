@@ -1,4 +1,5 @@
 import os
+import time
 from typing import Union
 #from pydantic import BaseModel
 from fastapi import FastAPI, Request
@@ -28,7 +29,7 @@ async def search(q: Union[str, None] = None):
     - pub_year - год создания
     - link - ссылка на иллюстрация
     '''
-    print(df['feature_joined_text'][85287])
+    #print(df['feature_joined_text'][85287])
     most_similar_descriptions = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions, top_k=3)  # type: ignore
 
     most_similar_arts = df[df['feature_joined_text'].isin(
