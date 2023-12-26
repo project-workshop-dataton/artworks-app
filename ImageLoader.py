@@ -1,7 +1,6 @@
 import urllib.request
 import urllib
 import re
-import imghdr
 from io import BytesIO
 from PIL import Image, ImageOps, ImageFont
 from urllib.parse import quote
@@ -17,7 +16,7 @@ def save_image_bing(link,id,headers):
             return False
         request = urllib.request.Request(link, None, headers)
         image = urllib.request.urlopen(request, timeout=2).read()
-        if not imghdr.what(None, image):
+        if image.format is None:
             #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
             raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
         photoshop(image,id)
