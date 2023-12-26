@@ -2,6 +2,15 @@
 
 Система рекомендации объектов исскуства музея [The Museum of Modern Art (NY)](https://www.moma.org) по свободному текстовому вопросу. Работа базируется на использованиии предобученной LLM-модели.
 > Проект тестировался с использованием компьютера на os windows и IDE pycharm
+
+## Навигация
+
+1. [Установка](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0)
+2. [Использование](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
+3. [Графики](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B8)
+1. [Установка](#Установка)
+2. [Использование](#Использование)
+3. [Графики](#Графики)
 ## Установка
 - Использовать автоматическую установку зависимостей
 
@@ -64,7 +73,16 @@
 Нотбук с визуализацией ![ссылка](./data_visualisation.ipynb)
 
 ## матрица кореляций признаков дат
+![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
+#### Динамическое отображение
+[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
 
+## матрица кореляций признаков дат
+![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
+#### Динамическое отображение
+[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
+
+## матрица кореляций признаков дат
 ![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
 #### Динамическое отображение
 [матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
