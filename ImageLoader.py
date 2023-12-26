@@ -16,9 +16,9 @@ def save_image_bing(link,id,headers):
             return False
         request = urllib.request.Request(link, None, headers)
         image = urllib.request.urlopen(request, timeout=2).read()
-        if image.format is None:
-            #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
-            raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
+        #if image.format is None:
+        #    #print('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
+        #    raise ValueError('Битая картинка т.к не удаётся определить расширение {}\n'.format(link))
         photoshop(image,id)
         return True
     except Exception as e:

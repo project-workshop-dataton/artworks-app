@@ -3,7 +3,7 @@ import gdown
 from gensim.models import KeyedVectors
 import pandas as pd
 
-
+os.makedirs(name='./data',exist_ok=True)
 path_to_word_vectors = "./data/GoogleNews-vectors-negative300.bin.gz"
 path_to_model = './data/arts_data_model_and_front.csv'
 
