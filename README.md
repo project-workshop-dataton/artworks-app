@@ -74,7 +74,7 @@
 ![newplot (10)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/b4626d46-bc57-4e86-9b63-fe747f5e8358)
 
 #### Динамическое отображение
-[распределения признака "release_date"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist1.html)
+[распределения признака "release_date"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist1.html)
 
 
 ### распределение признака "birth_year"
@@ -82,7 +82,7 @@
 
 
 #### Динамическое отображение
-[распределение признака "birth_year"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist2.html)
+[распределение признака "birth_year"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist2.html)
 
 
 ### распределение признака "death_year"
@@ -90,8 +90,39 @@
 
 
 #### Динамическое отображение
-[распределение признака "death_year"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist3.html)
+[распределение признака "death_year"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist3.html)
 
+## Гистограмма
+
+### Диаграмма распределений признака "release_date" в зависимости от категории "department"
+![newplot (13)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/8f5b7c9c-f101-4019-8ceb-c443a993de8b)
+
+
+#### Динамическое отображение
+[Диаграмма распределений признака "release_date" в зависимости от категории "department"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag_hist1.html)
+
+
+### Диаграмма распределений признака "release_date" в зависимости от категории "size_category"
+
+![newplot (14)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/ea42f4ae-17c8-4090-830b-5905944ff527)
+
+#### Динамическое отображение
+[Диаграмма распределений признака "release_date" в зависимости от категории "size_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag_hist2.html)
+
+
+### Диаграмма распределений признака "release_date" в зависимости от категории "duration_category"
+
+![newplot (15)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/9b426f24-3f45-4b20-8747-dc1f51b356af)
+
+#### Динамическое отображение
+[Диаграмма распределений признака "release_date" в зависимости от категории "duration_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag_hist3.html)
+
+### Диаграмма распределений признака "release_date" в зависимости от категории "gender"
+
+![newplot (16)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/19ab83e9-adb0-48dc-a14d-c96ce7725758)
+
+#### Динамическое отображение
+[Диаграмма распределений признака "release_date" в зависимости от категории "gender"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag_hist4.html)
 
 ## Столбчатая диаграмма
 
