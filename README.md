@@ -23,7 +23,7 @@
 
 - Другие инструменты для загрузки картинок и файлов
 
-`pip install Pillow gdown imghdr`
+`pip install Pillow gdown`
 
 И другие зависимости
 
