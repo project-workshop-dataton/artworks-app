@@ -68,6 +68,31 @@
 В данном разделе отображены графики построенные на основе обработынных данных, а также работы модели
 Нотбук с визуализацией [ссылка](./data_visualisation.ipynb)
 
+## Гистограмма + коробчатая
+
+### распределение признака "release_date"
+![newplot (10)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/b4626d46-bc57-4e86-9b63-fe747f5e8358)
+
+#### Динамическое отображение
+[распределения признака "release_date"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist1.html)
+
+
+### распределение признака "birth_year"
+![newplot (11)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/6356b5bb-fae9-4ef7-bb94-de173d8c5c94)
+
+
+#### Динамическое отображение
+[распределение признака "birth_year"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist2.html)
+
+
+### распределение признака "death_year"
+![newplot (12)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/4ef1f428-22e2-4851-98f6-e0ce69a71eca)
+
+
+#### Динамическое отображение
+[распределение признака "death_year"](https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/hist3.html)
+
+
 ## Столбчатая диаграмма
 
 ### Диаграмма зависимости количества произведений искусства от категории "department"
