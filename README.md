@@ -4,10 +4,6 @@
 > Проект тестировался с использованием компьютера на os windows и IDE pycharm
 
 ## Навигация
-
-1. [Установка](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0)
-2. [Использование](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
-3. [Графики](https://github.com/project-workshop-dataton/artworks-app/tree/development?tab=readme-ov-file#%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B8)
 1. [Установка](#Установка)
 2. [Использование](#Использование)
 3. [Графики](#Графики)
@@ -77,12 +73,33 @@
 #### Динамическое отображение
 [матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
 
-## матрица кореляций признаков дат
-![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
+## Диаграмма зависимости количества произведений искусства от категории "department"
+![newplot (2)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/662c8874-c090-43d3-b8ea-ba33bc1785cd)
 #### Динамическое отображение
-[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
+[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag1.html)
 
-## матрица кореляций признаков дат
-![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
+
+## Диаграмма зависимости количества произведений искусства от категории "classification"
+
+![newplot (3)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/5e824f75-818f-49a3-a4ba-4feccbd99078)
+
 #### Динамическое отображение
-[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
+[Диаграмма зависимости количества произведений искусства от категории "classification"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag2.html)
+
+## Диаграмма зависимости количества произведений искусства от категории "size_category"
+![newplot (4)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/69a723dc-b491-4a95-bce7-b94fafe06617)
+
+#### Динамическое отображение
+[Диаграмма зависимости количества произведений искусства от категории "size_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag3.html)
+
+
+## Диаграмма зависимости количества произведений искусства от категории "duration_category"
+![newplot (5)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/3b303502-9df1-4c79-9a3b-bc72225e0466)
+
+#### Динамическое отображение
+[Диаграмма зависимости количества произведений искусства от категории "duration_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag4.html)
+
+## Диаграмма зависимости количества произведений искусства от категории "gender"
+![newplot (1)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/662962df-2f25-41ae-8847-5781c83ca995)
+#### Динамическое отображение
+[Диаграмма зависимости количества произведений искусства от категории "gender"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/diag5.html)
