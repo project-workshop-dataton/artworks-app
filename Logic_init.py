@@ -21,4 +21,4 @@ df = pd.read_csv(path_to_model, dtype=str, keep_default_na=False)
 arts_descriptions = df['feature_joined_text'].to_list()
 
 # инициализируем модель
-model = KeyedVectors.load_word2vec_format(path_to_word_vectors, binary=True, )
+model = KeyedVectors.load_word2vec_format(path_to_word_vectors, binary=True)
