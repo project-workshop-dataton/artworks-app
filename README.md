@@ -61,9 +61,10 @@
 # Графики
 
 В данном разделе отображены графики построенные на основе обработынных данных, а также работы модели
+Нотбук с визуализацией ![ссылка](./data_visualisation.ipynb)
 
 ## матрица кореляций признаков дат
 
 ![newplot](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/17d6e044-eee8-4f97-8b37-03b3c824b7df)
 #### Динамическое отображение
-![матрица кореляций признаков дат](./plots/corr_heatmap.html)
+[матрица кореляций признаков дат](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/corr_heatmap.html)
