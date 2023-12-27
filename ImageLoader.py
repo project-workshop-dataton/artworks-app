@@ -10,6 +10,10 @@ import requests
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 work_path = "./static/images/"
+"""
+функция для загрузки картинок по ссылке
+входящие параметры ссылка id и заголовки агента для выполнения запроса
+"""
 def save_image_bing(link,id,headers):
     try:
         if " " in link:
@@ -24,6 +28,12 @@ def save_image_bing(link,id,headers):
     except Exception as e:
         #print('403 '+link, e)
         return False
+"""
+функция для картинок наиболее подходящих под характер запро из сторонних источников
+Принимает в себя запрос, находит и формирует список подходящих мсссылок
+и поочерёдно дёргает функцию save_image_bing передавая туда ссылку
+
+"""
 def run(req,id):
     print("Поиск по названию: ",req[str(id)])
     headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) '
@@ -54,6 +64,12 @@ def run(req,id):
             f = image.read()
             b = bytearray(f)
         photoshop(b,id)
+"""
+функция для обработки изображения принимает битовый массив 
+и преобразует его в объект изображения pillow,
+после чего обрезает фото согласно стандартным размерам 3:2
+и сохранения картинку в кеш присвоив ей название согласно id 
+"""
 def photoshop(file,id):
     img = Image.open(BytesIO(file))
     rgba = img.convert("RGBA")
@@ -61,6 +77,12 @@ def photoshop(file,id):
     #border = (0, 0, 0, 0)
     #final = ImageOps.expand(resize, border=border, fill='black') #задел на дополнение картинки, вместо обрезки
     resize.save(work_path+id+'.png',"PNG")
+"""
+функция для загрузки фото по ссылке, получает ссылку спаршенную html скелета сайта
+содержит специальный параметеризированный агент с предписанными данными кукис и сертификата,
+аыгруженные через curl непосредственнгоо с сайта музея.
+Необхордимо для обхода антибот защиты cloudflare, проверки капчи и иных препятствий для скачивания.
+"""
 def save_image(link,id):
     #real_link = link.split(sep = "/")[-1]
     sha = re.search(r'(?<=sha=)\w+', link).group(0)
@@ -128,7 +150,9 @@ def save_image(link,id):
     #
     #
     #    subprocess.Popen(cmd).communicate()
-
+"""
+Агент броузера, выгрузка html страницы через ав хромиум.
+"""
 async def fetch(browser, id,index):
     try:
         page = await browser.newPage()
@@ -165,7 +189,7 @@ async def fetch(browser, id,index):
         #    return False
     except  Exception as e:
         print(e)
-
+"Парсер веб страницы используя инструменты Прекрасного мыла 4. Не больше не меньше"
 def parseWebpage(page,id):
     soup = bs4.BeautifulSoup(page,features="lxml")
     #print(soup.text)
@@ -178,6 +202,11 @@ def parseWebpage(page,id):
         return None, None
     #print(ma['src'])
     return ma['src'],id
+"""
+Асинхронная функция, отвечающая за поднятие рабочих на з̶а̶в̶о̶д̶ паралельный вызов
+функций  выгрузки картинки, Такой подход обеспечиваем максимальную скорость отработки функционального модуля,
+даже не смотря на казалось бы неэффективность используемых методов парсинга относительно аналогичных решений по времени.
+"""
 async def newrun(id_list,names_dic):
     #asession = AsyncHTMLSession()
     #r = await asession.get('https://python.org/')
