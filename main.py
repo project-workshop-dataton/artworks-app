@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from ImageLoader import newrun
 from Logic_init import model, df, arts_descriptions 
 import model_implementing.word2vec as w2v
-from mysql_connector import add_data,get_data,add_data_V2,get_data_V2
+from mysql_connector import add_data,get_data,add_data_V2,get_data_V2,get_data_V2_q
 import nest_asyncio
 # создание приложения
 app = FastAPI()
@@ -42,13 +42,32 @@ async def search(q: Union[str, None] = None):
     - link - ссылка на иллюстрация
     '''
     #print(df['feature_joined_text'][85287])
-    most_similar_descriptions, cosine_distances = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions, top_k=3)
+    print(q)
+    temp_values_to_dell=[]
+    result = get_data_V2_q(q)
+    for i in result:
+        if i[1] == 0:
+            temp_values_to_dell.append(i[0])
+    arts_descriptions_cut= arts_descriptions
+    for index in temp_values_to_dell:
+        #print("индекс",index)
+        try:
+            arts_descriptions_cut.remove(df[df['artwork_id'] == str(index)]['feature_joined_text'].values[0])
+        except Exception as E:
+            print("Ошибка",E)
+        #arts_descriptions_cut.remove(df.query(f'artwork_id == {str(index)}')['feature_joined_text'].values[0])
+        #print(df['artwork_id'][str(133729)])
+    #print(df)
+    most_similar_descriptions, cosine_distances = w2v.find_most_similar_text(model=model, query=q, texts=arts_descriptions_cut, top_k=3)
+    print(most_similar_descriptions)
     
     describtions_cosine_distances = dict(zip(most_similar_descriptions, cosine_distances))
     write_json({'query': q, 'output': describtions_cosine_distances})
 
     most_similar_arts = df[df['feature_joined_text'].isin(
         most_similar_descriptions)]
+
+
 
     # return 3 suggestions
     data = most_similar_arts[['title','artwork_id', 'name','medium', 'classification']].to_dict('records')

@@ -64,5 +64,21 @@ def get_data_V2(q,id):
     print(result)
     myconn.close()
     return result
+def get_data_V2_q(q):
+    myconn = mysql.connector.connect(host="sql11.freemysqlhosting.net", user="sql11672622", passwd="KeeSghpbQI",database="sql11672622")
+    cur = myconn.cursor()
+    sql = "SELECT `artwork_id`,`result` FROM `Data` WHERE `q`= %s"
+    val = (q,)
+    try:
+        cur.execute(sql, val)
+        result = cur.fetchall()
+    except Exception as E:
+        myconn.rollback()
+        print(E)
+    print(cur.rowcount, "Результат коммита")
+    print(result)
+    myconn.close()
+    return result
+#get_data_V2_q("red")
 
 
