@@ -246,4 +246,5 @@
 #### Динамическое отображение
 [Распределение к-ва произведений искусства в зависимости от "nationality" и "duration_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap10.html)
 
+#
 [В начало](#Навигация)
