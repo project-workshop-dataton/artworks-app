@@ -194,47 +194,56 @@
 [Распределение к-ва произведений искусства в зависимости от classification и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap4.html)
 
 
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
+### Распределение к-ва произведений искусства в зависимости от категории "gender"
+![newplot (17)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/77a29b84-701c-4854-a4ca-8a96681e6fa0)
 
 #### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap5.html)
+[Распределение к-ва произведений искусства в зависимости от категории "gender"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap5.html)
 
 
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
+### Распределение к-ва произведений искусства в зависимости от "classification" и "gender"
+![newplot (18)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/f578ef07-77cb-4f10-836c-207117f5cde6)
+
 
 #### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap6.html)
+[Распределение к-ва произведений искусства в зависимости от "classification" и "gender"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap6.html)
 
 
 
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
-
-#### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap7.html)
+### Распределение к-ва произведений искусства в зависимости от "nationality" и "gender"
+![newplot (19)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/3372cb70-01c0-4482-855a-d0fbd7c2f5ff)
 
 
 
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
-
-#### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap8.html)
-
-
-
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
-
-#### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap9.html)
-
-
-
-### Распределение к-ва произведений искусства в зависимости от department и size_category
-![newplot (6)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/a8deea5a-74c3-4d30-9edd-75ade4e3cab9)
 
 #### Динамическое отображение
-[Распределение к-ва произведений искусства в зависимости от department и size_category](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap10.html)
+[Распределение к-ва произведений искусства в зависимости от "nationality" и "gender"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap7.html)
+
+
+
+### Распределение к-ва произведений искусства в зависимости от "nationality" и "department"
+![newplot (20)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/1c4f616a-3049-4c1c-8572-467f2a698177)
+
+
+#### Динамическое отображение
+[Распределение к-ва произведений искусства в зависимости от "nationality" и "department"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap8.html)
+
+
+
+### Распределение к-ва произведений искусства в зависимости от "nationality" и "size_category"
+![newplot (21)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/73ff6616-4e96-40a5-9f37-9cc80038543a)
+
+
+#### Динамическое отображение
+[Распределение к-ва произведений искусства в зависимости от "nationality" и "size_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap9.html)
+
+
+
+
+### Распределение к-ва произведений искусства в зависимости от "nationality" и "duration_category"
+![newplot (23)](https://github.com/project-workshop-dataton/artworks-app/assets/68296704/554e3a41-7548-4bfa-a598-327a38b697fa)
+
+#### Динамическое отображение
+[Распределение к-ва произведений искусства в зависимости от "nationality" и "duration_category"](http://htmlpreview.github.io/?https://github.com/project-workshop-dataton/artworks-app/blob/development/plots/heatmap10.html)
+
+[В начало](#Навигация)
